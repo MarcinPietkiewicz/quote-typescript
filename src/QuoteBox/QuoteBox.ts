@@ -4,8 +4,17 @@ import loadingIcon from "../assets/circle-loading.svg";
 import twitterLogo from "../assets/twitter.svg";
 import nextLogo from "../assets/feather.svg";
 
-class QuoteBox extends React.Component {
-  constructor(props) {
+type MyProps = {message: string}
+type MyState = {
+  rnd: number; 
+  quotes: string[] 
+}
+
+type Link = HTMLElement | false;
+
+
+class QuoteBox extends React.Component<MyProps, MyState> {
+  constructor(props: MyProps) {
     super(props);
     this.state = { rnd: 0, quotes: [] };
     this.fetchQuotes = this.fetchQuotes.bind(this);
@@ -19,8 +28,7 @@ class QuoteBox extends React.Component {
   }
 
   fetchQuotes() {
-    // fetch("http://localhost:8000/db") //development local server //json-server --watch quotes.json --port 8000
-      fetch("https://farmerolaf.com/jsons/quotes.json") // swap to this in production
+      fetch("https://farmerolaf.com/jsons/quotes.json") 
       .then((response) => response.json())
       .then((result) => {
         let num = this.rndQuoteNum(result.quotes?.length ?? 0);
@@ -34,7 +42,7 @@ class QuoteBox extends React.Component {
       .catch((err) => console.log("Fetch error: " + err));
   }
 
-  rndQuoteNum(len) {
+  rndQuoteNum(len: number) {
     if (this.state.quotes !== undefined) {
       return Math.floor(Math.random() * (len + 1));
     } else {
@@ -42,14 +50,17 @@ class QuoteBox extends React.Component {
     }
   }
 
-  setTwitterAttributes(quote, author) {
-    document
-      .getElementById("tweet-quote")
-      .setAttribute(
+
+  setTwitterAttributes(quote: string, author: string) {
+    const link : Link = document.getElementById('tweet-quote') || false
+
+    if (link) {
+      link.setAttribute(
         "href",
         "https://twitter.com/intent/tweet?hashtags=quotes&text=" + encodeURIComponent('"' + quote + '" \n' + author)
-      );
-  }
+      );}
+    }
+  
 
   handleClick() {
     const r = this.rndQuoteNum(this.state.quotes.length);
