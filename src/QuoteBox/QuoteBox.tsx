@@ -1,9 +1,5 @@
 import React from "react";
 import "./QuoteBox.css";
-import loadingIcon from "../assets/circle-loading.svg";
-import twitterLogo from "../assets/twitter.svg";
-import nextLogo from "../assets/feather.svg";
-
 
 type MyProps = {}
 type MyState = {
@@ -16,7 +12,6 @@ type Quote = {
 }
 
 type Link = HTMLElement | false;
-
 
 class QuoteBox extends React.Component<MyProps, MyState> {
   constructor(props: MyProps) {
@@ -55,7 +50,6 @@ class QuoteBox extends React.Component<MyProps, MyState> {
     }
   }
 
-
   setTwitterAttributes(quote: string, author: string) {
     const link : Link = document.getElementById('tweet-quote') || false
 
@@ -65,7 +59,6 @@ class QuoteBox extends React.Component<MyProps, MyState> {
         "https://twitter.com/intent/tweet?hashtags=quotes&text=" + encodeURIComponent('"' + quote + '" \n' + author)
       );}
     }
-  
 
   handleClick() {
     const r = this.rndQuoteNum(this.state.quotes.length);
@@ -75,13 +68,12 @@ class QuoteBox extends React.Component<MyProps, MyState> {
     },200)
   }
 
-
   render() {
     return (
       <div id="quote-box">
         <div id="text">
           {this.state.quotes !== undefined
-            ? this.state.quotes[this.state.rnd]?.quote ?? <img src={loadingIcon} alt="loading..." />
+            ? this.state.quotes[this.state.rnd]?.quote ?? <img src='assets/circle-loading.svg' alt="loading..." />
             : "Error fetching quotes"}
         </div>
         <div id="author">{this.state.quotes !== undefined ? this.state.quotes[this.state.rnd]?.author ?? "" : ""}</div>
@@ -91,12 +83,12 @@ class QuoteBox extends React.Component<MyProps, MyState> {
             <img
               className="icon-button"
               id="twitter-quote"
-              src={twitterLogo}
+              src='assets/twitter.svg'
               alt="twitter logo"
             />
           </a>
           <button id="new-quote" onClick={this.handleClick}>
-            <img className="icon-button" src={nextLogo} alt="new quote logo" id="logo" />
+            <img className="icon-button" src='assets/feather.svg' alt="new quote logo" id="logo" />
             new quote
           </button>
         </div>
@@ -104,7 +96,5 @@ class QuoteBox extends React.Component<MyProps, MyState> {
     );
   }
 }
-
-
 
 export default QuoteBox;
