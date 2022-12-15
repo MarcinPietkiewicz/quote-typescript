@@ -4,10 +4,10 @@ import loadingIcon from "../assets/circle-loading.svg";
 import twitterLogo from "../assets/twitter.svg";
 import nextLogo from "../assets/feather.svg";
 
-type MyProps = {message: string}
+type MyProps = {}
 type MyState = {
   rnd: number; 
-  quotes: string[] 
+  quotes: Object[] 
 }
 
 type Link = HTMLElement | false;
@@ -67,7 +67,6 @@ class QuoteBox extends React.Component<MyProps, MyState> {
     this.setState({ rnd: r });
     setTimeout(() => {
       this.setTwitterAttributes(this.state.quotes[this.state.rnd].quote,this.state.quotes[this.state.rnd].author);
-      console.log(this.state.quotes[this.state.rnd]);
     },200)
   }
 
