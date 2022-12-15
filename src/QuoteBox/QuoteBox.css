@@ -1,5 +1,5 @@
 #quote-box {
-  background-color: rgb(226, 251, 254);
+  background-color: rgb(251, 253, 238);
   color: black;
   border-radius: 10px;
   padding: 30px;
@@ -12,7 +12,7 @@
 #new-quote {
   background: none;
   color: inherit;
-  background-color: rgb(152, 247, 247);
+  background-color: rgb(255, 248, 206);
   border: inherit;
   border-radius: 10px;
   padding: 5px;
@@ -30,9 +30,9 @@
 }
 
 #new-quote:hover {
-  background-color: rgb(138, 243, 243);
+  background-color: rgb(255, 241, 196);
   color: #000;
-  transition: ease-in 0.3s;
+  transition: ease-in 0.2s;
 }
 
 #author {
