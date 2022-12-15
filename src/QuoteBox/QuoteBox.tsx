@@ -3,6 +3,7 @@ import "./QuoteBox.css";
 
 type MyProps = {}
 type MyState = {
+  backgroundColor: string,
   rnd: number, 
   quotes: Quote[]
 }
@@ -16,7 +17,7 @@ type Link = HTMLElement | false;
 class QuoteBox extends React.Component<MyProps, MyState> {
   constructor(props: MyProps) {
     super(props);
-    this.state = { rnd: 0, quotes: [] };
+    this.state = { backgroundColor: '#000000', rnd: 0, quotes: [] };
     this.fetchQuotes = this.fetchQuotes.bind(this);
     this.rndQuoteNum = this.rndQuoteNum.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -26,6 +27,9 @@ class QuoteBox extends React.Component<MyProps, MyState> {
   componentDidMount() {
     this.fetchQuotes();
   }
+
+
+ 
 
   fetchQuotes() {
       fetch("https://farmerolaf.com/jsons/quotes.json") 
