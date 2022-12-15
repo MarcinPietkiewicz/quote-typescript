@@ -35,7 +35,6 @@ class QuoteBox extends React.Component<MyProps, MyState> {
         this.setState({ rnd: num, quotes: result.quotes });
       })
       .then(() => {setTimeout(() => {
-        console.log(this.state.quotes[this.state.rnd]);
         this.setTwitterAttributes(this.state.quotes[this.state.rnd].quote,this.state.quotes[this.state.rnd].author);
       },200)
       })
