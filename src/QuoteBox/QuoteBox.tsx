@@ -4,10 +4,15 @@ import loadingIcon from "../assets/circle-loading.svg";
 import twitterLogo from "../assets/twitter.svg";
 import nextLogo from "../assets/feather.svg";
 
+
 type MyProps = {}
 type MyState = {
-  rnd: number; 
-  quotes: Object[] 
+  rnd: number, 
+  quotes: Quote[]
+}
+
+type Quote = {
+  quote: string, author: string
 }
 
 type Link = HTMLElement | false;
